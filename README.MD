@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #  Traffic Analysis Lab (Wireshark)
 
 Objective
