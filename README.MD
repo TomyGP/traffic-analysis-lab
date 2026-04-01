@@ -1,64 +1,46 @@
-Analisis de red local con Nmap y Wireshark
+#  Traffic Analysis Lab (Wireshark)
 
-Objetivo:
-Analizar una red local para identifica puertos abiertos, servicios activos y trafico de red.
+Objective
+Analyze network traffic to identify normal behavior and understand how systems communicate over a network.
 
-Herramientas utilizadas:
--Kali Linux
--Nmap
--Wireshark
+Tools Used
+- Wireshark
+- Kali Linux
 
-Escaneo con Nmap
+Traffic Analysis
 
-Se realizo un escaneo rapido al router:
+DNS Requests
+Observed domains:
+- google.com
+- api.github.com
+- fibertel.com.ar
 
-Comando: 
--Nmap -sS 192.168.0.1
+Additionally, AAAA (IPv6) queries for google.com were detected.
 
-Resultados:
--53/tcp -> open -> DNS
--80/tcp -> open -> HTTP
--443/tcp-> open -> HTTPS
--22/tcp -> filtered -> SSH
--23/tcp -> filtered -> Telnet
+HTTPS Traffic
+Detected secure connections to external IP:
 
-'/home/kali/Desktop/network-analysis-lab/screenshots/Evidencia Nmap.png' 
+- 4.228.31.149:443
 
-Analisis de Wireshark
+This indicates encrypted communication using HTTPS.
 
-DNS:
-Se observo una consulta DNS a: 
-api.github.com
 
-Respuesta:
-api.github.com -> 34.160.144.191
+Uncommon Traffic
+No unusual ports were observed. Traffic was limited to standard web ports (80 and 443).
 
-Trafico HTTPS
 
-se detecto trafico TCP hacia:
-34.160.144.191:443
+Findings
 
-incluyendo;
+- Normal browsing generates DNS queries and HTTPS traffic
+- Multiple domains are resolved before establishing connections
+- HTTPS encrypts communication between the client and external servers
+- No suspicious or abnormal traffic was detected
 
-SYN
-ACK
-FIN / RST
 
-'/home/kali/Desktop/network-analysis-lab/screenshots/Evidencia DNS.png' 
+Conclusion
 
-Concluciones:
+This lab demonstrates how to capture and analyze real network traffic using Wireshark, identifying normal communication patterns and understanding DNS and HTTPS behavior.
 
--Se identificaron servicios activos en el router
--Se analizo el proceso completo de resoluciones DNS
--Se observo trafico cifrado mediante HTTPS
--Se comprendio el flujo de comunicacion en una red real
 
-Aprendizajes:
-
--Se uso Nmap para escaneo de puertos
--Interpretacion de estados
--Analisis de trafico con Wireshark
--Funcionamiento del protocolo DNS
-
-Autor:
-Brown Tomas
+## Author
+Tomas Brown
